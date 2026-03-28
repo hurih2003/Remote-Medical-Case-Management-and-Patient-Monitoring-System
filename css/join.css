@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-green: #78a957;
+  --light-green: 8FBF6A#;
+  --dark-green: #5f8f45;
+
+  --primary-blue: #2e7fa6;
+  --light-blue: #4fa3c6;
+  --dark-blue: #1f5f7a;
+
+  --text-dark: #2f4f63;
+  --text-gray: #6b7c87;
+
+  --bg-light: #f2f4f5;
+}
+html {
+  height: 100%;
+}
+body {
+  font-family: "Cairo", sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: var(--bg-light);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 4rem;
+  background: linear-gradient(
+    27deg,
+    rgba(120, 169, 87, 1) 16%,
+    rgba(95, 143, 69, 1) 39%,
+    rgba(46, 127, 166, 1) 60%,
+    rgba(31, 95, 122, 1) 73%,
+    rgba(47, 79, 99, 1) 91%
+  );
+}
+header img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.home-log {
+  display: flex;
+  gap: 20px;
+}
+
+.home-log li a {
+  font-size: 1rem;
+  background-color: var(--light-blue);
+  padding: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.home-log li a:hover {
+  background-color: var(--dark-blue);
+}
+.home-log li a:active {
+  background-color: var(--primary-blue);
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 10rem;
+  height: (100vh-header);
+
+
+}
+.users{
+  width: 100%;
+}
+main h1 {
+  text-align: center;
+  color: var(--text-dark);
+}
+.users ul{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 6rem;
+  
+}
+.users ul li a {
+  font-size: 1rem;
+  background-color: var(--primary-green);
+  padding: 15px 40px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0px 8px 15px rgba(120, 169, 87, 0.3);
+}
+.users ul li a:hover {
+  background-color: var(--dark-blue);
+}
+.users ul li a:active {
+  background-color: var(--primary-blue);
+}
