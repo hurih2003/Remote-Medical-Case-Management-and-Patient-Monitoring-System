@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.3), rgba(59, 130, 246, 0.1)), 
+                url('../Photo/3.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px; 
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 420px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .active { display: block; }
+
+        h2 { text-align: center; margin-bottom: 35px; color: #333; font-size: 28px; }
+        h3 { text-align: center; margin-bottom: 30px; color: #666; font-size: 18px; font-weight: normal; }
+
+        .input-group { 
+            margin-bottom: 25px; 
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px; 
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-bottom: 18px; 
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #a29bfe;
+            box-shadow: 0 0 5px rgba(162, 155, 254, 0.3);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px; 
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            margin: 0; 
+        }
+
+        .btn-dark {
+            width: 100%;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .btn-dark:hover { background-color: #555; }
+
+        .footer-text, .top-link { text-align: center; font-size: 14px; margin-top: 25px; color: #666; }
+        a { color: #4a90e2; text-decoration: none; font-weight: bold; cursor: pointer; }
+
+        .divider {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            line-height: 0.1em;
+            margin: 25px 0 35px;
+        }
+        .divider span { background: #fff; padding: 0 15px; color: #999; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loginPage" class="card active">
+        <h2>Patient Login</h2>
+        <form>
+            <div class="input-group">
+                <input type="email" placeholder="Patient@example.com">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Enter your password">
+            </div>
+            
+            <div class="form-options">
+                <label class="checkbox-container">
+                    <input type="checkbox"> Remember me?
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-dark">Sign in</button>
+            <p class="footer-text">New Patient? <a onclick="togglePages()">Sign Up</a></p>
+        </form>
+    </div>
+
+    <div id="signupPage" class="card">
+        <p class="top-link">Already have an account? <a onclick="togglePages()">Sign in</a></p>
+        <div class="divider"><span>or</span></div>
+        <h3>We Hope You Get Well Soon</h3>
+        <form>
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="ID">
+            <input type="email" placeholder="Email">
+            <input type="tel" placeholder="Phone Number">
+            <input type="text" placeholder="Birthday(DD/MM/YYYY)">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+            
+            <button type="submit" class="btn-dark">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePages() {
+            const login = document.getElementById('loginPage');
+            const signup = document.getElementById('signupPage');
+            login.classList.toggle('active');
+            signup.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
