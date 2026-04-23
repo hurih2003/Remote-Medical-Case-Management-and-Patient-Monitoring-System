@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة المسؤول - نظام مراقبة المرضى</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(59, 130, 246, 0.3)), 
+                        url('../Photo/3.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background-color: rgba(0, 0, 0, 0.3); 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; 
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            max-width: 90%; 
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .home-log {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        .home-log li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 17px;
+            transition: 0.3s ease;
+        }
+
+        .home-log li a:hover {
+            color: #3b82f6;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 130px 20px 60px; 
+            min-height: 100vh; 
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 40px; 
+            border-radius: 25px;
+            width: 100%;
+            max-width: 480px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .active { 
+            display: block; 
+        }
+
+        h2 { 
+            text-align: center; 
+            margin-bottom: 15px; 
+            color: #111; 
+            font-size: 28px; 
+            font-weight: 900;
+        }
+
+        .role-badge {
+            display: block;
+            text-align: center;
+            background: #0f172a; 
+            color: white;
+            width: fit-content;
+            margin: 0 auto 30px;
+            padding: 4px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 18px; 
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            text-align: right;
+            background: #f8fafc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0f172a;
+            box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px; 
+            cursor: pointer;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 18px; 
+            height: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0 25px; 
+        }
+
+        .btn-admin {
+            width: 100%;
+            padding: 16px;
+            background-color: #0f172a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-admin:hover { 
+            background-color: #1e293b; 
+            transform: translateY(-2px);
+        }
+
+        .footer-text { 
+            text-align: center; 
+            font-size: 15px; 
+            margin-top: 25px; 
+            color: #718096; 
+        }
+
+        a { 
+            color: #3b82f6; 
+            text-decoration: none; 
+            font-weight: 700; 
+            cursor: pointer;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border: 4px solid #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #2ecc71;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="nav-container">
+            <ul class="home-log">
+                <li><a href="index.html">الصفحة الرئيسية</a></li>
+                <li><a href="about us.html">من نحن</a></li>
+            </ul>
+            <img src="Photo/logo.jpeg" alt="logo" class="logo"/>
+        </div>
+    </header>
+
+    <main>
+        <div id="loginPage" class="card active">
+            <h2>تسجيل دخول المسؤول</h2>
+            <span class="role-badge">لوحة التحكم المركزية</span>
+            <form onsubmit="handleLogin(event)">
+                <input type="email" placeholder="البريد الإلكتروني " required>
+                <input type="password" placeholder="كلمة المرور" required>
+                
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox"> 
+                        <span>تذكرني</span>
+                    </label>
+                    <a onclick="showPage('forgotPasswordPage')">نسيت كلمة المرور؟</a>
+                </div>
+
+                <button type="submit" class="btn-admin">تسجيل الدخول </button>
+            </form>
+        </div>
+
+        <div id="forgotPasswordPage" class="card">
+            <h2>نسيت كلمة المرور</h2>
+            <span class="role-badge">أمان النظام</span>
+            <form onsubmit="event.preventDefault(); showPage('resetPasswordPage');">
+                <p style="text-align: center; margin-bottom: 20px; color: #718096; font-size: 14px;">يرجى إدخال البريد الإلكتروني الخاص بالإدارة لإرسال رابط التحقق.</p>
+                <input type="email" placeholder="Admin@example.com" required>
+                <button type="submit" class="btn-admin">إرسال رابط الاستعادة</button>
+                <p class="footer-text"><a onclick="showPage('loginPage')">العودة لتسجيل الدخول</a></p>
+            </form>
+        </div>
+
+        <div id="resetPasswordPage" class="card">
+            <h2>تحديث كلمة المرور</h2>
+            <span class="role-badge">تحديث الأمان</span>
+            <form onsubmit="event.preventDefault(); showPage('successPage');">
+                <input type="password" placeholder="كلمة المرور الجديدة" required>
+                <div style="font-size: 12px; margin: -10px 0 15px; color: #2ecc71; text-align: right;">قوة التشفير: عالية ✓</div>
+                <input type="password" placeholder="تأكيد كلمة المرور الجديدة" required>
+                <button type="submit" class="btn-admin">تأكيد التحديث</button>
+            </form>
+        </div>
+
+        <div id="successPage" class="card">
+            <div style="text-align: center;">
+                <div class="success-icon">✓</div>
+                <h2>تم تأكيد الهوية!</h2>
+                <p style="color: #718096; margin-bottom: 30px; line-height: 1.6;">تم التحقق من صلاحيات المسؤول بنجاح. يمكنك الآن الانتقال لإدارة النظام.</p>
+                <p style="font-weight: bold; margin-bottom: 20px; color: #0f172a;">admin.root@system.com</p>
+                
+                <button class="btn-admin" onclick="goToDashboard()">فتح لوحة التحكم</button>
+                
+                <p class="footer-text">
+                    <a onclick="showPage('loginPage')">العودة للرئيسية</a><br><br>
+                    <a href="#" style="color: #718096; font-size: 13px;">سجل النشاطات الأمنية</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            window.location.href = "Admin wireframe.html";
+        }
+
+        function goToDashboard() {
+            window.location.href = "Admin wireframe.html";
+        }
+
+        function showPage(pageId) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
+
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>

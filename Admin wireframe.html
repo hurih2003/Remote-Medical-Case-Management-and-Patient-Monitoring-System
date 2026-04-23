@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المسؤول</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/Admin wireframe.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-text">لوحة التحكم</div>
+        <ul class="nav-links">
+            <li id="tab-dashboard" class="nav-item active" onclick="switchTab('dashboard')">الرئيسية</li>
+            <li id="tab-users" class="nav-item" onclick="switchTab('users')">إدارة المستخدمين</li>
+            <li id="tab-reports" class="nav-item" onclick="switchTab('reports')">التقارير</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="top-nav">
+            <div class="top-nav-links">
+                <span id="link-dashboard" class="active-link" onclick="switchTab('dashboard')">لوحة التحكم</span>
+                <span id="link-users" onclick="switchTab('users')">المستخدمين</span>
+                <span id="link-reports" onclick="switchTab('reports')">التقارير</span>
+                <span onclick="window.location.href='index.html'" style="color: #ef4444;">تسجيل الخروج</span>
+            </div>
+        </div>
+
+        <div id="dashboard" class="content-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>إجمالي المرضى</h3>
+                    <p>120</p>
+                    <div class="sub-text">بزيادة 12% عن الشهر الماضي</div>
+                </div>
+                <div class="stat-card">
+                    <h3>إجمالي الأطباء</h3>
+                    <p>18</p>
+                    <div class="sub-text">جميعهم نشطون الآن</div>
+                </div>
+                <div class="stat-card">
+                    <h3>إجمالي الحالات</h3>
+                    <p>342</p>
+                    <div class="sub-text">مفتوحة ومغلقة</div>
+                </div>
+            </div>
+
+            <div class="section-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>تنبيهات (هامة)</h3>
+                        <button class="btn">تتطلب متابعة</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>النوع</th>
+                                <th>الوصف</th>
+                                <th>الحالة</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: #3b82f6; font-weight: 700;">تقني</td>
+                                <td>مهلة تحميل الملف لبعض المستخدمين</td>
+                                <td><span class="badge-outline">مفتوح</span></td>
+                                <td><button class="btn">عرض</button></td>
+                            </tr>
+                            <tr>
+                                <td style="color: #f59e0b; font-weight: 700;">بلاغ</td>
+                                <td>محتوى غير لائق في الرسائل الداخلية</td>
+                                <td><span class="badge-outline">مفتوح</span></td>
+                                <td><button class="btn">عرض</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3>نظرة عامة سريعة</h3>
+                    <div style="margin-top: 15px;">
+                        <p style="font-size: 14px; font-weight: 800; color: #1e293b;">الغرض:</p>
+                        <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">واجهة إشراف إدارية مركزية.</p>
+                        
+                        <p style="font-size: 14px; font-weight: 800; color: #1e293b;">الوظائف:</p>
+                        <ul style="font-size: 13px; color: #64748b; margin-right: 20px; margin-bottom: 20px;">
+                            <li>عرض الإحصائيات الفورية.</li>
+                            <li>الإشعارات والمشاكل التقنية.</li>
+                        </ul>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-dark" onclick="switchTab('users')">إدارة المستخدمين</button>
+                            <button class="btn" onclick="switchTab('reports')">التقارير</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="users" class="content-section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>إدارة المستخدمين</h3>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>المستخدم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>الدور</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>علي حسن</td>
+                            <td>ali@example.com</td>
+                            <td>مريض</td>
+                            <td><span class="badge-outline badge-success">نشط</span></td>
+                            <td><button class="btn">عرض</button> <button class="btn" style="color:#ef4444">تعطيل</button></td>
+                        </tr>
+                        <tr>
+                            <td>مريم خالد</td>
+                            <td>maryam@example.com</td>
+                            <td>مريض</td>
+                            <td><span class="badge-outline badge-success">نشط</span></td>
+                            <td><button class="btn">عرض</button> <button class="btn" style="color:#ef4444">تعطيل</button></td>
+                        </tr>
+                        <tr>
+                            <td>د. عمر</td>
+                            <td>omar.doc@example.com</td>
+                            <td>طبيب</td>
+                            <td><span class="badge-outline badge-success">نشط</span></td>
+                            <td><button class="btn">عرض</button> <button class="btn" style="color:#ef4444">تعطيل</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="reports" class="content-section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>التقارير</h3>
+                    <div style="display: flex; gap: 10px;">
+                        <select class="btn" style="padding: 5px 15px;">
+                            <option>نشاط النظام</option>
+                        </select>
+                        <button class="btn btn-dark">توليد</button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>النوع</th>
+                            <th>الوصف</th>
+                            <th>الوقت</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>نشاط</td>
+                            <td>45 تسجيل دخول اليوم<br>• 12 حالة جديدة</td>
+                            <td>اليوم 12:10</td>
+                            <td><span class="badge-outline badge-success">تم</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            document.querySelectorAll('.top-nav-links span').forEach(link => link.classList.remove('active-link'));
+            const activeLink = document.getElementById('link-' + tabId);
+            if(activeLink) activeLink.classList.add('active-link');
+        }
+    </script>
+</body>
+</html>

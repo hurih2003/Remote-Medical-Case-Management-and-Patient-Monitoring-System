@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوحة تحكم الدكتور</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/DectorOverview.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="logo-text">لوحة التحكم</div>
+      <ul class="nav-links">
+        <li
+          id="tab-overView"
+          class="nav-item active"
+          onclick="switchTab('overView')"
+        >
+          نظرة عامة
+        </li>
+        <li id="tab-patient" class="nav-item" onclick="switchTab('patient')">
+          المرضى
+        </li>
+        <li
+          id="tab-appointments"
+          class="nav-item"
+          onclick="switchTab('appointments')"
+        >
+          المواعيد
+        </li>
+
+        <li id="tab-messages" class="nav-item" onclick="switchTab('messages')">
+          الرسائل
+        </li>
+
+        <li
+          id="tab-prescriptions"
+          class="nav-item"
+          onclick="switchTab('prescriptions')"
+        >
+          الوصفات الطبية
+        </li>
+      </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="top-nav">
+        <div class="top-nav-links">
+          <span
+            id="link-overView"
+            class="active-link"
+            onclick="switchTab('overView')"
+          >
+            نظرة عامة</span
+          >
+
+          <span id="link-patient" onclick="switchTab('patient')">المرضى</span>
+
+          <span id="link-appointments" onclick="switchTab('appointments')"
+            >المواعيد</span
+          >
+
+          <span id="link-messages" onclick="switchTab('messages')"
+            >الرسائل</span
+          >
+
+          <span id="link-prescriptions" onclick="switchTab('prescriptions')"
+            >الوصفات الطبية</span
+          >
+
+          <span
+            onclick="window.location.href = 'index.html'"
+            style="color: #ef4444"
+            >تسجيل الخروج</span
+          >
+        </div>
+      </div>
+
+      <div id="overView" class="content-section active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>مواعيد اليوم</h3>
+            <p>5</p>
+            <div class="sub-text">التالي: 10:30 _ المريض: علي حسن</div>
+          </div>
+          <div class="stat-card">
+            <h3>المرضى النشطين</h3>
+            <p>24</p>
+            <div class="sub-text">منهم 10 مرضى أمراض مزمنة</div>
+          </div>
+          <div class="stat-card">
+            <h3>رسالة جديدة</h3>
+            <p>6</p>
+            <div class="sub-text">من مرضى مختلفين ينتظرون الرد</div>
+          </div>
+        </div>
+
+        <div class="section-container">
+          <div class="card">
+            <div class="card-header">
+              <h3>مواعيد اليوم</h3>
+              <button class="btn">عرض الجدول كامل</button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>الوقت</th>
+                  <th>المريض</th>
+                  <th>الحالة المرضية</th>
+                  <th>الاتصال</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <time datetime="2026-04-22T10:30"> 10:30 صباحاً </time>
+                  </td>
+
+                  <td>علي حسن</td>
+                  <td>مريض سكري</td>
+
+                  <td class="online">متصل</td>
+                  <td><button class="btn btn-dark">عرض الحالة</button></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <time datetime="2026-04-22T10:30"> 10:30 صباحاً </time>
+                  </td>
+                  <td>مريم خالد</td>
+                  <td>مريض ضغط دم</td>
+
+                  <td class="online">متصل</td>
+                  <td><button class="btn btn-dark">عرض الحالة</button></td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <time datetime="2026-04-22T10:30"> 10:30 صباحاً </time>
+                  </td>
+                  <td>ابراهيم نصار</td>
+                  <td>مريض ضغط دم</td>
+
+                  <td class="offline">غير متصل</td>
+                  <td><button class="btn btn-dark">عرض الحالة</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>أخر الرسائل</h3>
+              <button class="btn">عرض كافة الرسائل</button>
+            </div>
+            <div>
+              <ul style="font-size: 13px; color: #64748b; margin: 20px">
+                <li>
+                  <div class="messages_contaner">
+                    <div class="patient_message">
+                      <h2>المريض: <span>علي حسن</span></h2>
+                      <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                    </div>
+                    <button class="next_btn">التالي</button>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="messages_contaner">
+                    <div class="patient_message">
+                      <h2>المريض: <span>ابراهيم نصار</span></h2>
+                      <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                    </div>
+                    <button class="next_btn">التالي</button>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="messages_contaner">
+                    <div class="patient_message">
+                      <h2>المريض: <span>مريم خالد</span></h2>
+                      <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                    </div>
+                    <button class="next_btn">التالي</button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- المرضى -->
+
+      <div id="patient" class="content-section">
+        <div class="card">
+          <div class="card-header">
+            <h3>المرضى</h3>
+            <input type="text" placeholder="بحث بواسطة الاسم او الحالة" />
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>المرضى</th>
+                <th>الحالة المرضية</th>
+                <th>اخر موعد</th>
+                <th>مستوى الخطورة</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>علي حسن</td>
+                <td>مريض سكري</td>
+                <td>
+                  <data val="2023-04-22">2023-04-22</data>
+                </td>
+                <td><span class="badge-outline badge-moderate">معتدل</span></td>
+
+                <td><button class="btn btn-dark">عرض الملف</button></td>
+              </tr>
+
+              <tr>
+                <td>مريم خالد</td>
+                <td>مريض سكري</td>
+                <td>
+                  <data val="2023-04-22">2023-04-22</data>
+                </td>
+                <td><span class="badge-outline badge-low">منخفض</span></td>
+
+                <td><button class="btn btn-dark">عرض الملف</button></td>
+              </tr>
+
+              <tr>
+                <td>مريم خالد</td>
+                <td>مريض سكري</td>
+                <td>
+                  <data val="2023-04-22">2023-04-22</data>
+                </td>
+                <td><span class="badge-outline badge-high">عالي</span></td>
+
+                <td><button class="btn btn-dark">عرض الملف</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card m_t">
+          <p>
+            تقدم هذه الصفحة نظرة عامة على المرضى نحن رعايد الطبيب و مع التركيز
+            على الحالات المستمرة التي تتطلب المتابعة
+          </p>
+        </div>
+      </div>
+
+      <!-- المواعيد -->
+
+      <div id="appointments" class="content-section">
+        <div class="card">
+          <div class="card-header">
+            <h3>المواعيد</h3>
+            <div style="display: flex; gap: 10px">
+              <input type="text" placeholder="بحث بواسطة الاسم او الحالة" />
+              <input type="text" placeholder="بحث بواسطة الاسم او الحالة" />
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>المريض</th>
+                <th>الحالة</th>
+                <th>الوقت/ التاريخ</th>
+                <th>الحالة</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>علي حسن</td>
+                <td>مريض سكري</td>
+                <td>
+                  <div class="date_time">
+                    <time datetime="2023-04-22T10:30"> 2023-04-22</time>
+                    <time datetime="2023-04-22T10:30"> 10:30 </time>
+                  </div>
+                </td>
+                <td class="online">متصل</td>
+                <td><button class="btn btn-dark">عرض الحالة</button></td>
+              </tr>
+              <tr>
+                <td>علي حسن</td>
+                <td>مريض سكري</td>
+                <td>
+                  <div class="date_time">
+                    <time datetime="2023-04-22T10:30"> 2023-04-22</time>
+                    <time datetime="2023-04-22T10:30"> 10:30 </time>
+                  </div>
+                </td>
+                <td class="online">متصل</td>
+                <td><button class="btn btn-dark">عرض الحالة</button></td>
+              </tr>
+              <tr>
+                <td>علي حسن</td>
+                <td>مريض سكري</td>
+                <td>
+                  <div class="date_time">
+                    <time datetime="2023-04-22T10:30"> 2023-04-22</time>
+                    <time datetime="2023-04-22T10:30"> 10:30 </time>
+                  </div>
+                </td>
+                <td class="online">متصل</td>
+                <td><button class="btn btn-dark">عرض الحالة</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card m_t">
+          <p>
+            تقدم هذه الصفحة نظرة عامة على المرضى نحن رعايد الطبيب و مع التركيز
+            على الحالات المستمرة التي تتطلب المتابعة
+          </p>
+        </div>
+      </div>
+
+      <div id="messages" class="content-section">
+        <div class="card">
+          <div class="card-header">
+            <h3>الرسائل</h3>
+            <div style="display: flex; gap: 10px">
+              <input type="text" placeholder=" بحث الرسائل " />
+              <button class="btn btn-dark">فتح المحادثة</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>النوع</th>
+                <th>الوصف</th>
+                <th>الوقت</th>
+                <th>الحالة</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>نشاط</td>
+                <td>45 تسجيل دخول اليوم<br />• 12 حالة جديدة</td>
+                <td>اليوم 12:10</td>
+                <td><span class="badge-outline badge-success">تم</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card m_t">
+          <div class="card-header">
+            <h3>أخر الرسائل</h3>
+            <button class="btn">عرض كافة الرسائل</button>
+          </div>
+          <div>
+            <ul style="font-size: 13px; color: #64748b; margin: 20px">
+              <li>
+                <div class="messages_contaner">
+                  <div class="patient_message">
+                    <h2>المريض: <span>علي حسن</span></h2>
+                    <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                  </div>
+                  <button class="next_btn">التالي</button>
+                </div>
+              </li>
+
+              <li>
+                <div class="messages_contaner">
+                  <div class="patient_message">
+                    <h2>المريض: <span>ابراهيم نصار</span></h2>
+                    <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                  </div>
+                  <button class="next_btn">التالي</button>
+                </div>
+              </li>
+
+              <li>
+                <div class="messages_contaner">
+                  <div class="patient_message">
+                    <h2>المريض: <span>مريم خالد</span></h2>
+                    <p>دكتور وسكر الدم كان بالامس مرتفع</p>
+                  </div>
+                  <button class="next_btn">التالي</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="prescriptions" class="content-section">
+        <div class="card">
+          <div class="card-header">
+            <h3>الوصفات الطبية</h3>
+            <div style="display: flex; gap: 10px">
+              <input
+                type="text"
+                placeholder="بحث بواسطة اسم المريض او الدواء"
+              />
+              <button class="btn btn-dark">اضافة وصفة</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>المريض</th>
+                <th>الدواء</th>
+                <th>الجرعة</th>
+                <th>التعليمات</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>علي حسن</td>
+                <td>ميتفورمين</td>
+                <td>500 ملغ مرتين يومياً</td>
+                <td>تناول مع الطعام لتقليل اضطرابات المعدة</td>
+
+                <td><button class="btn btn-dark">عرض الوصفة</button></td>
+              </tr>
+
+              <tr>
+                <td>مريم خالد</td>
+                <td>انالابريل</td>
+                <td>20 ملغ مرة يومياً</td>
+                <td>تناول في الصباح مع كوب ماء</td>
+
+                <td><button class="btn btn-dark">عرض الوصفة</button></td>
+              </tr>
+
+              <tr>
+                <td>ابراهيم نصار</td>
+                <td>ليراجلوتايد</td>
+                <td>0.6 ملغ مرة يومياً لمدة أسبوع، ثم 1.2 ملغ مرة يومياً</td>
+
+                <td>حقن تحت الجلد في البطن أو الفخذ أو الذراع العلوي</td>
+
+                <td><button class="btn btn-dark">عرض الوصفة</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card m_t">
+          تقدم هذه الصفحة نظرة عامة على الوصفات الطبية التي تم إصدارها للمرضى مع
+          التركيز على الجرعات والتعليمات لضمان الاستخدام الصحيح
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function switchTab(tabId) {
+        document
+          .querySelectorAll(".content-section")
+          .forEach((section) => section.classList.remove("active"));
+
+        document.getElementById(tabId).classList.add("active");
+
+        document
+          .querySelectorAll(".nav-item")
+          .forEach((item) => item.classList.remove("active"));
+
+        document.getElementById("tab-" + tabId).classList.add("active");
+
+        document
+          .querySelectorAll(".top-nav-links span")
+          .forEach((link) => link.classList.remove("active-link"));
+        const activeLink = document.getElementById("link-" + tabId);
+
+        if (activeLink) activeLink.classList.add("active-link");
+      }
+    </script>
+  </body>
+</html>
