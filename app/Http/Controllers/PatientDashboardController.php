@@ -9,7 +9,7 @@ class PatientDashboardController extends Controller
 {
     public function index(): View
     {
-        $patient = auth()->user()->patient;
+        $patient = $this->authUser()->patient;
         
         $appointments = Appointment::where('patient_id', $patient->id)
             ->with('doctor.user')

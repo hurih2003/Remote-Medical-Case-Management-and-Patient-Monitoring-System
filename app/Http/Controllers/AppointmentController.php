@@ -24,7 +24,7 @@ class AppointmentController extends Controller
 
     public function doctorIndex(Request $request): View
     {
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         $query = Appointment::where('doctor_id', $doctor->id)
             ->with('patient.user');
@@ -48,7 +48,7 @@ class AppointmentController extends Controller
 
     public function doctorCreate(Request $request): View
     {
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         $treatedPatientIds = Appointment::where('doctor_id', $doctor->id)
             ->distinct()
@@ -84,7 +84,7 @@ class AppointmentController extends Controller
             'notes' => 'nullable|string',
         ]);
 
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         Appointment::create([
             'patient_id' => $validated['patient_id'],
@@ -104,7 +104,7 @@ class AppointmentController extends Controller
 
     public function patientAppointments(Request $request): View
     {
-        $patient = auth()->user()->patient;
+        $patient = $this->authUser()->patient;
         
         $appointments = Appointment::where('patient_id', $patient->id)
             ->with('doctor.user', 'medicalRecords')
@@ -140,7 +140,7 @@ class AppointmentController extends Controller
             'notes' => 'nullable|string',
         ]);
 
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         Appointment::create([
             'patient_id' => $validated['patient_id'],

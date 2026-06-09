@@ -12,7 +12,7 @@ class MedicalReportController extends Controller
 {
     public function patientIndex(): View
     {
-        $patient = auth()->user()->patient;
+        $patient = $this->authUser()->patient;
         $reports = MedicalReport::where('patient_id', $patient->id)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -27,7 +27,7 @@ class MedicalReportController extends Controller
             'description' => 'nullable|string|max:500',
         ]);
 
-        $patient = auth()->user()->patient;
+        $patient = $this->authUser()->patient;
 
         $file = $request->file('file');
         $originalName = $file->getClientOriginalName();
@@ -45,7 +45,7 @@ class MedicalReportController extends Controller
 
     public function download(MedicalReport $report)
     {
-        if ($report->patient_id !== auth()->user()->patient->id) {
+        if ($report->patient_id !== $this->authUser()->patient->id) {
             return back()->with('error', 'لا يمكنك الوصول إلى هذا الملف');
         }
 
@@ -58,7 +58,7 @@ class MedicalReportController extends Controller
 
     public function doctorDownload(MedicalReport $report)
     {
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         $isDoctorPatient = \App\Models\Appointment::where('doctor_id', $doctor->id)
             ->where('patient_id', $report->patient_id)
@@ -83,7 +83,7 @@ class MedicalReportController extends Controller
 
     public function destroy(MedicalReport $report): RedirectResponse
     {
-        if ($report->patient_id !== auth()->user()->patient->id) {
+        if ($report->patient_id !== $this->authUser()->patient->id) {
             return back()->with('error', 'لا يمكنك حذف هذا الملف');
         }
 

@@ -12,7 +12,7 @@ class DoctorScheduleController extends Controller
 {
     public function index(Request $request): View
     {
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
         $schedules = DoctorSchedule::where('doctor_id', $doctor->id)
             ->orderByRaw("FIELD(day, 'saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday')")
             ->get();
@@ -28,7 +28,7 @@ class DoctorScheduleController extends Controller
             'end_time' => 'required|after:start_time',
         ]);
 
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         DoctorSchedule::create([
             'doctor_id' => $doctor->id,

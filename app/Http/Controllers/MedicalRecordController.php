@@ -25,7 +25,7 @@ class MedicalRecordController extends Controller
             'notes' => 'nullable|string',
         ]);
 
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         MedicalRecord::create([
             'appointment_id' => $appointment->id,
@@ -72,7 +72,7 @@ class MedicalRecordController extends Controller
             'notes' => 'nullable|string',
         ]);
 
-        $doctor = auth()->user()->doctor;
+        $doctor = $this->authUser()->doctor;
 
         MedicalRecord::create([
             'appointment_id' => null,
@@ -89,7 +89,7 @@ class MedicalRecordController extends Controller
 
     public function patientIndex(): View
     {
-        $patient = auth()->user()->patient;
+        $patient = $this->authUser()->patient;
         $records = MedicalRecord::where('patient_id', $patient->id)
             ->with(['doctor.user', 'appointment'])
             ->orderBy('created_at', 'desc')
