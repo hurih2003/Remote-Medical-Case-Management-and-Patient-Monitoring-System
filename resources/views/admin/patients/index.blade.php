@@ -65,6 +65,12 @@
                     @endforelse
                 </tbody>
             </table>
+
+            @if($patients->hasPages())
+            <div style="padding: 1rem;">
+                {{ $patients->appends(request()->query())->links() }}
+            </div>
+            @endif
         </div>
     </div>
 @endsection

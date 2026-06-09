@@ -259,7 +259,7 @@ MedicalRecord ── belongsTo ──────► Patient
 | Delete patient | DELETE /patients/{id} | ✅ Done |
 | View all appointments system-wide | GET /admin/appointments | ✅ Done |
 | Monthly appointment analytics | Included in dashboard | ✅ Done |
-| Pagination on lists | — | ❌ Missing |
+| Pagination on lists | — | ✅ Done |
 | Export reports as PDF | — | ❌ Missing |
 | Advanced analytics (top doctors, diseases) | — | ❌ Missing |
 
@@ -281,9 +281,9 @@ MedicalRecord ── belongsTo ──────► Patient
 | View patient medical history | GET /doctor/patients/{id}/history | ✅ Done |
 | Manage weekly schedule | GET/POST/PATCH/DELETE /doctor/schedule | ✅ Done |
 | Download patient report | GET /doctor/patient/report/{id}/download | ✅ Done |
-| Conflict detection (no double-booking) | — | ❌ Missing |
-| Schedule-aware booking validation | — | ❌ Missing |
-| Calendar view for appointments | — | ❌ Missing |
+| Conflict detection (no double-booking) | — | ✅ Done |
+| Schedule-aware booking validation | — | ✅ Done |
+| Calendar view for appointments | — | ✅ Done |
 
 ### 3.3 Patient Features
 
@@ -632,9 +632,10 @@ Route::middleware(['role:patient'])->group(...);
 **Priority: CRITICAL — يجب إنجازها قبل أي عرض**
 **Estimated Time: 1 Week**
 
-- [ ] Add pagination to all list views (doctors, patients, appointments)
-- [ ] Add appointment conflict detection in `AppointmentController::confirm()`
-- [ ] Add schedule-aware validation when confirming appointment dates
+- [x] Add pagination to all list views (doctors, patients, appointments)
+- [x] Add appointment conflict detection in `AppointmentController::confirm()`
+- [x] Add schedule-aware validation when confirming appointment dates
+- [x] Add rate limiting on login route (throttle:5,1)
 - [ ] Fix missing input validation in appointment creation forms
 - [ ] Add CSRF protection check on all forms (verify existing forms are protected)
 
@@ -677,11 +678,10 @@ Route::middleware(['role:patient'])->group(...);
 **Priority: MEDIUM**
 **Estimated Time: 3–4 Days**
 
-- [ ] Add FullCalendar.js CDN to doctor appointment views
-- [ ] Create `doctor/appointments/calendar.blade.php`
-- [ ] Pass appointments as JSON from controller to calendar
-- [ ] Add toggle button: List View / Calendar View
-- [ ] Color-code appointments by status (pending=yellow, confirmed=green, cancelled=red)
+- [x] Add FullCalendar.js CDN to doctor appointment views
+- [x] Pass appointments as JSON from controller to calendar
+- [x] Add toggle button: List View / Calendar View
+- [x] Color-code appointments by status (pending=yellow, confirmed=blue, completed=green, cancelled=red)
 
 **Deliverable:** Doctor can view appointments on a visual calendar
 

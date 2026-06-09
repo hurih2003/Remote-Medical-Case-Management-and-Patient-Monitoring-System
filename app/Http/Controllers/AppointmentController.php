@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Models\DoctorSchedule;
 use App\Notifications\AppointmentStatusNotification;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,7 +17,7 @@ class AppointmentController extends Controller
     {
         $appointments = Appointment::with(['patient.user', 'doctor.user'])
             ->orderBy('appointment_date', 'desc')
-            ->get();
+            ->paginate(15);
 
         return view('admin.appointments.index', compact('appointments'));
     }
@@ -40,7 +42,7 @@ class AppointmentController extends Controller
             $query->where('status', $request->status);
         }
         
-        $appointments = $query->orderBy('created_at', 'desc')->get();
+        $appointments = $query->orderBy('created_at', 'desc')->paginate(15);
 
         return view('doctor.appointments.index', compact('appointments', 'doctor'));
     }
@@ -159,6 +161,28 @@ class AppointmentController extends Controller
         $validated = $request->validate([
             'appointment_date' => 'required|date|after:now',
         ]);
+
+        $date = Carbon::parse($validated['appointment_date']);
+        $dayName = strtolower($date->englishDayOfWeek);
+
+        $scheduleExists = DoctorSchedule::where('doctor_id', $appointment->doctor_id)
+            ->where('day', $dayName)
+            ->where('is_active', true)
+            ->exists();
+
+        if (!$scheduleExists) {
+            return back()->withErrors(['appointment_date' => 'الطبيب لا يعمل في هذا اليوم، اختر يوماً آخر']);
+        }
+
+        $conflict = Appointment::where('doctor_id', $appointment->doctor_id)
+            ->where('appointment_date', $validated['appointment_date'])
+            ->where('status', 'confirmed')
+            ->where('id', '!=', $appointment->id)
+            ->exists();
+
+        if ($conflict) {
+            return back()->withErrors(['appointment_date' => 'هذا الوقت محجوز بالفعل، اختر وقتاً آخر']);
+        }
 
         $appointment->update([
             'appointment_date' => $validated['appointment_date'],

@@ -25,7 +25,7 @@ class PatientController extends Controller
             $query->where('gender', $request->gender);
         }
 
-        $patients = $query->orderBy('created_at', 'desc')->get();
+        $patients = $query->orderBy('created_at', 'desc')->paginate(15);
         return view('admin.patients.index', compact('patients'));
     }
 

@@ -58,6 +58,12 @@
                     @endforelse
                 </tbody>
             </table>
+
+            @if($doctors->hasPages())
+            <div style="padding: 1rem;">
+                {{ $doctors->links() }}
+            </div>
+            @endif
         </div>
     </div>
 @endsection

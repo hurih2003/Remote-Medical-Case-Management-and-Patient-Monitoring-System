@@ -44,6 +44,12 @@
                     @endforelse
                 </tbody>
             </table>
+
+            @if($appointments->hasPages())
+            <div style="padding: 1rem;">
+                {{ $appointments->links() }}
+            </div>
+            @endif
         </div>
     </div>
 @endsection
